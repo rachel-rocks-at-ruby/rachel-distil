@@ -8,8 +8,8 @@
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
-              <%= link_to domain.hostname, domain.hostname %>
-              <%= link_to "Edit", edit_domain_path(domain) %> | <%= link_to "Delete", domain, method: :delete, data: { confirm: 'Are you sure you want to delete this domain?' } %>
+              <p><%= link_to domain.hostname, domain.hostname %> | <%= domain.ip %></p>
+              <p><%= link_to "Edit", edit_domain_path(domain) %> | <%= link_to "Delete", domain, method: :delete, data: { confirm: 'Are you sure you want to delete this domain?' } %></p>
             </h4>
           </div>
         </div>
