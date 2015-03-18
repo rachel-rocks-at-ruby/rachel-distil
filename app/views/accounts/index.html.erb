@@ -1,0 +1,19 @@
+<h1 align="center">Accounts</h1>
+
+<div class="row" align="center">
+  <div>
+    <% @accounts.each do |account| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to account.name, account_path(account) %>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "Home", root_path %>
+  </div>
+</div>
+

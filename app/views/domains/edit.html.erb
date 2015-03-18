@@ -1,0 +1,14 @@
+<h1>Edit <%= @domain.hostname %></h1>
+
+<div class="col-md-8">
+  <%= form_for @domain do |f| %>
+    <div class="form-group">
+      <%= f.label :domain %>
+      <%= f.text_field :hostname, class: 'form-control', placeholder: "Enter domain" %>
+    </div>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  <% end %>
+
+	<p><%= link_to "Home", root_path %></p>
+</div>
+

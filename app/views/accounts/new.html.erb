@@ -1,0 +1,11 @@
+<h1>New Account</h1>
+
+<div class="col-md-8">
+  <%= form_for @account do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', placeholder: "Enter account name" %>
+    </div>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  <% end %>
+</div>
