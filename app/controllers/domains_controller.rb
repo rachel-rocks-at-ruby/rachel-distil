@@ -1,4 +1,7 @@
 class DomainsController < ApplicationController
+
+	require 'socket'
+
 	def index
 		@domains = Domain.all
 	end
@@ -10,7 +13,7 @@ class DomainsController < ApplicationController
 
 	def create
 		@domain = Domain.new(params.require(:domain).permit(:hostname, :ip, :account_id))
-		@domain.ip = `host #{@domain.hostname}`.match(/(\d{1,3}\.){3}\d{1,3}/).to_s
+		@domain.ip = IPSocket::getaddress(@domain.hostname)
 
 		if @domain.save
       redirect_to account_path(@domain.account), notice: "Domain was created successfully."
