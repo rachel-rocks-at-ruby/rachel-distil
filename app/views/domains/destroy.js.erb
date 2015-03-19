@@ -1,0 +1,5 @@
+<% if @domain.destroyed? %> 
+	$("#domain-<%= @domain.id %>").hide()
+<% else %>
+	$("#domain-<%= @domain.id %>").prepend("<div class='alert alert-danger'><%= @domain.errors.full_messages.join(',') %></div>");
+<% end %>

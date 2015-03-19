@@ -1,5 +1,4 @@
 class DomainsController < ApplicationController
-
 	require 'socket'
 
 	def index
@@ -14,13 +13,15 @@ class DomainsController < ApplicationController
 	def create
 		@domain = Domain.new(params.require(:domain).permit(:hostname, :ip, :account_id))
 		@domain.ip = IPSocket::getaddress(@domain.hostname)
-
-		if @domain.save
-      redirect_to account_path(@domain.account), notice: "Domain was created successfully."
-    else
-      flash[:error] = "Error creating domain. Please try again. #{@domain.errors.full_messages.join(',')}"
-      render :new
-    end
+		@account = @domain.account
+	
+      	respond_to do |format|
+  			if @domain.save
+		      	format.js
+  			else
+      			format.js
+  			end
+    	end
 	end
 
 	def show
@@ -44,12 +45,15 @@ class DomainsController < ApplicationController
 	def destroy
 		@domain = Domain.find(params[:id])
 
-    if @domain.destroy
-      flash[:notice] = "Domain was deleted successfully."
-      redirect_to :back
-    else
-      flash[:error] = "There was an error deleting the domain."
-      redirect_to :back
-    end
+	    if @domain.destroy
+	      flash[:notice] = "Domain was deleted successfully."
+	    else
+	      flash[:error] = "There was an error deleting the domain."
+	    end
+
+	  	respond_to do |format|
+	      format.html
+	      format.js
+	    end
 	end
 end

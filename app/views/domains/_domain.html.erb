@@ -1,0 +1,8 @@
+ <div class="media" id="domain-<%= domain.id %>">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <p><%= link_to domain.hostname, domain.hostname %> | <%= domain.ip %></p>
+      <p><%= link_to "Edit", edit_domain_path(domain) %> | <%= link_to "Delete", domain, method: :delete, remote: true %></p>
+    </h4>
+  </div>
+</div>

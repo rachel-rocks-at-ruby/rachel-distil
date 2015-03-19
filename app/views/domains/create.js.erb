@@ -1,0 +1,7 @@
+<% if @domain.persisted? %> 
+	$('.domain-list').prepend("<%= escape_javascript(render(@domain)) %>");
+	$('.alert').remove()
+	$('#domain_hostname').val("");
+<% else %>
+	$(".new-domain").prepend("<div class='alert alert-danger'><%= @domain.errors.full_messages.join(',') %></div>");
+<% end %>

@@ -22,6 +22,7 @@ class AccountsController < ApplicationController
     @accounts = Account.where()
 		@account = Account.find(params[:id])
     @domains = Domain.where(account_id: @account.id)
+    @domain = Domain.new
 	end
 
 	def edit

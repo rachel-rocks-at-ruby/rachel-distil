@@ -1,0 +1,10 @@
+ <%= form_for @domain, remote: true do |f| %>
+    <div class="form-group">
+    	<div class="col-xs-8">
+      		<%= f.label :domain %>
+      		<%= f.text_field :hostname, class: 'form-control', placeholder: "Enter domain" %>
+		</div>    
+    </div>
+    	<%= f.hidden_field :account_id, value: @account.id %>
+    	<%= f.submit "Save", class: 'btn btn-success' %>
+ <% end %>
